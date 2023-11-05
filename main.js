@@ -6,7 +6,7 @@ for (let i = 0; i <= 3; i++) {
         const rowDiv = document.createElement('div');
         rowDiv.classList.add('row-div');
         numberPad.appendChild(rowDiv);
-
+        
         for (let index=0; index < 4; index++) {
             const buttonType = document.createElement('button');
             buttonType.classList.add('regular-button');
