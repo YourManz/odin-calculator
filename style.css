@@ -6,11 +6,22 @@
 
 .display {
     flex:auto;
-    width:100px;
-    height:20px;
+    /* width:100px;
+    height:20px; */
     background-color: pink;
 }
 
 .buttons {
-    flex:1
+    flex:1;
+    display:flex;
+    flex-direction: column;
+}
+
+.buttons .row-div {
+    flex: 1;
+    display:flex;
+}
+
+.buttons .row-div .regular-button {
+    flex:1;
 }

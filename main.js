@@ -26,3 +26,19 @@ for (let i = 0; i <= 3; i++) {
             arrayCounter++;
         }
 }
+
+function pickOperator(event) {
+    if (event === '+') {
+
+    } else if (event === '-') {
+
+    } else if (event === '*') {
+        
+    } else if (event === '/') {
+        
+    } else if (event === '.') {
+        
+    } else if (event === '=') {
+        
+    }
+}
