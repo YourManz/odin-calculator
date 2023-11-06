@@ -1,4 +1,4 @@
-const numberPad = document.querySelector('.main-buttons');
+const numberPad = document.querySelector('.buttons');
 const charecterArray = [9, 8, 7, '+', 6, 5, 4, '-', 3, 2, 1, '*', '.', 0, '=', '/'];
 
 let arrayCounter = 0;

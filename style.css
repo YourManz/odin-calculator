@@ -1,4 +1,16 @@
 .page {
+    display:flex;
+    flex-direction: column;
     margin:auto;
 }
 
+.display {
+    flex:auto;
+    width:100px;
+    height:20px;
+    background-color: pink;
+}
+
+.buttons {
+    flex:1
+}
