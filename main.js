@@ -1,6 +1,9 @@
 const numberPad = document.querySelector('.buttons');
 const charecterArray = [9, 8, 7, '+', 6, 5, 4, '-', 3, 2, 1, '*', '.', 0, '=', '/'];
 
+let inputValue = '';
+let storredValue = 0;
+
 let arrayCounter = 0;
 for (let i = 0; i <= 3; i++) {
         const rowDiv = document.createElement('div');
@@ -19,7 +22,7 @@ for (let i = 0; i <= 3; i++) {
                     pickOperator(event.target.innerHTML)
                     return;
                 }
-                console.log(event.target.innerHTML)
+                pressedNumber(event.target)
             })
 
             rowDiv.appendChild(buttonType);
@@ -27,15 +30,30 @@ for (let i = 0; i <= 3; i++) {
         }
 }
 
+const workingNumber = document.querySelector('.working')
+const storredNumber = document.querySelector('.previous')
+function pressedNumber(event) {
+    inputValue = inputValue + event.innerHTML;
+    workingNumber.innerHTML = inputValue;
+}
+
 function pickOperator(event) {
     if (event === '+') {
-
+        storredValue = Number(workingNumber.innerHTML);
+        storredNumber.innerHTML = storredValue;
+        workingNumber.innerHTML = '0'
     } else if (event === '-') {
-
+        storredValue = Number(workingNumber.innerHTML);
+        storredNumber.innerHTML = storredValue;
+        workingNumber.innerHTML = '0'
     } else if (event === '*') {
-        
+        storredValue = Number(workingNumber.innerHTML);
+        storredNumber.innerHTML = storredValue;
+        workingNumber.innerHTML = '0'
     } else if (event === '/') {
-        
+        storredValue = Number(workingNumber.innerHTML);
+        storredNumber.innerHTML = storredValue;
+        workingNumber.innerHTML = '0'
     } else if (event === '.') {
         
     } else if (event === '=') {
