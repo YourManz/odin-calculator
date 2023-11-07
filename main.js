@@ -1,5 +1,13 @@
 const numberPad = document.querySelector('.buttons');
 const charecterArray = [9, 8, 7, '+', 6, 5, 4, '-', 3, 2, 1, '*', '.', 0, '=', '/'];
+const clearButton = document.querySelector('.js-clear');
+
+clearButton.addEventListener('click', ( ) => {
+    inputValue = '0';
+    storredValue = 0;
+    workingNumber.innerHTML = inputValue;
+    storredNumber.innerHTML = storredValue;
+});
 
 let inputValue = '';
 let storredValue = 0;
@@ -40,40 +48,46 @@ function pressedNumber(event) {
 function pickOperator(event) {
     if (event === '+') {
         if (storredValue == '0') {
-            storredValue = Number(workingNumber.innerHTML);
+            storredValue = workingNumber.innerHTML;
             storredNumber.innerHTML = storredValue;
+            inputValue = '0';
         } else if (!storredValue == '0') {
-            storredValue += Number(workingNumber);
+            storredValue = Number(storredValue.innerHTML) + Number(workingNumber.innerHTML);
             storredNumber.innerHTML = storredValue;
+            inputValue = '0';
         };
         workingNumber.innerHTML = '0';
 
     } else if (event === '-') {
         if (storredValue == '0') {
-            storredValue = Number(workingNumber.innerHTML);
+            storredValue = workingNumber.innerHTML;
             storredNumber.innerHTML = storredValue;
+            inputValue = '0';
         } else if (!storredValue == '0') {
-            storredValue -= Number(workingNumber);
+            storredValue = Number(storredValue.innerHTML) - Number(workingNumber.innerHTML);
             storredNumber.innerHTML = storredValue;
+            inputValue = '0';
         };
         workingNumber.innerHTML = '0';
 
     } else if (event === '*') {
         if (storredValue == '0') {
-            storredValue = Number(workingNumber.innerHTML);
+            storredValue = workingNumber.innerHTML;
             storredNumber.innerHTML = storredValue;
+            inputValue = '0';
         } else if (!storredValue == '0') {
-            storredValue = storredValue * Number(workingNumber);
+            storredValue = Number(storredValue.innerHTML) * Number(workingNumber.innerHTML);
             storredNumber.innerHTML = storredValue;
+            inputValue = '0';
         };
         workingNumber.innerHTML = '0';
 
     } else if (event === '/') {
         if (storredValue == '0') {
-            storredValue = Number(workingNumber.innerHTML);
+            storredValue = workingNumber.innerHTML;
             storredNumber.innerHTML = storredValue;
         } else if (!storredValue == '0') {
-            storredValue += Number(storredValue) / Number(workingNumber);
+            storredValue += Number(storredValue.innerHTML) / Number(workingNumber.innerHTML);
             storredNumber.innerHTML = storredValue;
         };
         workingNumber.innerHTML = '0';
