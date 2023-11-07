@@ -39,21 +39,45 @@ function pressedNumber(event) {
 
 function pickOperator(event) {
     if (event === '+') {
-        storredValue = Number(workingNumber.innerHTML);
-        storredNumber.innerHTML = storredValue;
-        workingNumber.innerHTML = '0'
+        if (storredValue == '0') {
+            storredValue = Number(workingNumber.innerHTML);
+            storredNumber.innerHTML = storredValue;
+        } else if (!storredValue == '0') {
+            storredValue += Number(workingNumber);
+            storredNumber.innerHTML = storredValue;
+        };
+        workingNumber.innerHTML = '0';
+
     } else if (event === '-') {
-        storredValue = Number(workingNumber.innerHTML);
-        storredNumber.innerHTML = storredValue;
-        workingNumber.innerHTML = '0'
+        if (storredValue == '0') {
+            storredValue = Number(workingNumber.innerHTML);
+            storredNumber.innerHTML = storredValue;
+        } else if (!storredValue == '0') {
+            storredValue -= Number(workingNumber);
+            storredNumber.innerHTML = storredValue;
+        };
+        workingNumber.innerHTML = '0';
+
     } else if (event === '*') {
-        storredValue = Number(workingNumber.innerHTML);
-        storredNumber.innerHTML = storredValue;
-        workingNumber.innerHTML = '0'
+        if (storredValue == '0') {
+            storredValue = Number(workingNumber.innerHTML);
+            storredNumber.innerHTML = storredValue;
+        } else if (!storredValue == '0') {
+            storredValue = storredValue * Number(workingNumber);
+            storredNumber.innerHTML = storredValue;
+        };
+        workingNumber.innerHTML = '0';
+
     } else if (event === '/') {
-        storredValue = Number(workingNumber.innerHTML);
-        storredNumber.innerHTML = storredValue;
-        workingNumber.innerHTML = '0'
+        if (storredValue == '0') {
+            storredValue = Number(workingNumber.innerHTML);
+            storredNumber.innerHTML = storredValue;
+        } else if (!storredValue == '0') {
+            storredValue += Number(storredValue) / Number(workingNumber);
+            storredNumber.innerHTML = storredValue;
+        };
+        workingNumber.innerHTML = '0';
+
     } else if (event === '.') {
         
     } else if (event === '=') {
