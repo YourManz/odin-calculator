@@ -2,16 +2,18 @@ const numberPad = document.querySelector('.buttons');
 const charecterArray = [9, 8, 7, '+', 6, 5, 4, '-', 3, 2, 1, '*', '.', 0, '=', '/'];
 const clearButton = document.querySelector('.js-clear');
 
-clearButton.addEventListener('click', ( ) => {
+clearButton.addEventListener('click', ( ) => clearButton());
+
+function clear() {
     inputValue = '0';
     storredValue = 0;
     workingNumber.innerHTML = inputValue;
     storredNumber.innerHTML = storredValue;
-});
+}
 
 let inputValue = '';
 let storredValue = 0;
-let opperatorSelection = '';
+let operatorSelection = '';
 
 let arrayCounter = 0;
 for (let i = 0; i <= 3; i++) {
@@ -57,6 +59,7 @@ function pickOperator(event) {
             storredNumber.innerHTML = storredValue;
             inputValue = '0';
         };
+        operatorSelection = '+';
         workingNumber.innerHTML = '0';
 
     } else if (event === '-') {
@@ -69,6 +72,7 @@ function pickOperator(event) {
             storredNumber.innerHTML = storredValue;
             inputValue = '0';
         };
+        operatorSelection = '-';
         workingNumber.innerHTML = '0';
 
     } else if (event === '*') {
@@ -81,6 +85,7 @@ function pickOperator(event) {
             storredNumber.innerHTML = storredValue;
             inputValue = '0';
         };
+        operatorSelection = '*';
         workingNumber.innerHTML = '0';
 
     } else if (event === '/') {
@@ -91,11 +96,17 @@ function pickOperator(event) {
             storredValue += Number(storredNumber.innerHTML) / Number(workingNumber.innerHTML);
             storredNumber.innerHTML = storredValue;
         };
+        operatorSelection = '/';
         workingNumber.innerHTML = '0';
 
     } else if (event === '.') {
         
     } else if (event === '=') {
-        
-    }
-}
+        if (storredNumber === '0') {
+            storredNumber.innerHTML = workingNumber.innerHTML;
+        } else {
+            pickOperator(operatorSelection);
+            
+        };
+    };
+};
