@@ -11,6 +11,7 @@ clearButton.addEventListener('click', ( ) => {
 
 let inputValue = '';
 let storredValue = 0;
+let opperatorSelection = '';
 
 let arrayCounter = 0;
 for (let i = 0; i <= 3; i++) {
@@ -52,7 +53,7 @@ function pickOperator(event) {
             storredNumber.innerHTML = storredValue;
             inputValue = '0';
         } else if (!storredValue == '0') {
-            storredValue = Number(storredValue.innerHTML) + Number(workingNumber.innerHTML);
+            storredValue = Number(storredNumber.innerHTML) + Number(workingNumber.innerHTML);
             storredNumber.innerHTML = storredValue;
             inputValue = '0';
         };
@@ -64,7 +65,7 @@ function pickOperator(event) {
             storredNumber.innerHTML = storredValue;
             inputValue = '0';
         } else if (!storredValue == '0') {
-            storredValue = Number(storredValue.innerHTML) - Number(workingNumber.innerHTML);
+            storredValue = Number(storredNumber.innerHTML) - Number(workingNumber.innerHTML);
             storredNumber.innerHTML = storredValue;
             inputValue = '0';
         };
@@ -76,7 +77,7 @@ function pickOperator(event) {
             storredNumber.innerHTML = storredValue;
             inputValue = '0';
         } else if (!storredValue == '0') {
-            storredValue = Number(storredValue.innerHTML) * Number(workingNumber.innerHTML);
+            storredValue = Number(storredNumber.innerHTML) * Number(workingNumber.innerHTML);
             storredNumber.innerHTML = storredValue;
             inputValue = '0';
         };
@@ -87,7 +88,7 @@ function pickOperator(event) {
             storredValue = workingNumber.innerHTML;
             storredNumber.innerHTML = storredValue;
         } else if (!storredValue == '0') {
-            storredValue += Number(storredValue.innerHTML) / Number(workingNumber.innerHTML);
+            storredValue += Number(storredNumber.innerHTML) / Number(workingNumber.innerHTML);
             storredNumber.innerHTML = storredValue;
         };
         workingNumber.innerHTML = '0';
