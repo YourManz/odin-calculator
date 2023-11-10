@@ -2,7 +2,7 @@ const numberPad = document.querySelector('.buttons');
 const charecterArray = [9, 8, 7, '+', 6, 5, 4, '-', 3, 2, 1, '*', '.', 0, '=', '/'];
 const clearButton = document.querySelector('.js-clear');
 
-clearButton.addEventListener('click', ( ) => clearButton());
+clearButton.addEventListener('click', ( ) => clear());
 
 function clear() {
     inputValue = '0';
@@ -58,6 +58,7 @@ function pickOperator(event) {
             storredValue = Number(storredNumber.innerHTML) + Number(workingNumber.innerHTML);
             storredNumber.innerHTML = storredValue;
             inputValue = '0';
+            makesEquals();
         };
         operatorSelection = '+';
         workingNumber.innerHTML = '0';
@@ -71,6 +72,7 @@ function pickOperator(event) {
             storredValue = Number(storredNumber.innerHTML) - Number(workingNumber.innerHTML);
             storredNumber.innerHTML = storredValue;
             inputValue = '0';
+            makesEquals();
         };
         operatorSelection = '-';
         workingNumber.innerHTML = '0';
@@ -84,6 +86,7 @@ function pickOperator(event) {
             storredValue = Number(storredNumber.innerHTML) * Number(workingNumber.innerHTML);
             storredNumber.innerHTML = storredValue;
             inputValue = '0';
+            makesEquals();
         };
         operatorSelection = '*';
         workingNumber.innerHTML = '0';
@@ -95,18 +98,25 @@ function pickOperator(event) {
         } else if (!storredValue == '0') {
             storredValue += Number(storredNumber.innerHTML) / Number(workingNumber.innerHTML);
             storredNumber.innerHTML = storredValue;
+            inputValue = '0';
+            makesEquals();
         };
+        operatorSelection = '+';
         operatorSelection = '/';
         workingNumber.innerHTML = '0';
 
     } else if (event === '.') {
         
     } else if (event === '=') {
-        if (storredNumber === '0') {
-            storredNumber.innerHTML = workingNumber.innerHTML;
-        } else {
-            pickOperator(operatorSelection);
-            
-        };
+        makesEquals()
+    };
+};
+
+function makesEquals() {
+    if (storredNumber === '0') {
+        storredNumber.innerHTML = workingNumber.innerHTML;
+    } else {
+        pickOperator(operatorSelection);
+        
     };
 };
