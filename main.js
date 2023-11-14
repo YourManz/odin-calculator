@@ -110,6 +110,7 @@ function pickOperator(event) {
     } else if (event === '=') {
         makesEquals()
     };
+    console.log('test')
 };
 
 function makesEquals() {
