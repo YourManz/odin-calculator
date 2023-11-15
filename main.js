@@ -31,9 +31,15 @@ for (let i = 0; i <= 3; i++) {
             buttonType.addEventListener('click', (event) => {
                 if (event.target.classList.length >= 2) {
                     pickOperator(event.target.innerHTML)
+                    if (event === '.') {
+        
+                    } else if (event === '=') {
+                        pickOperator(event.target.innerHTML)
+                    };
                     return;
                 }
                 pressedNumber(event.target)
+                
             })
 
             rowDiv.appendChild(buttonType);
@@ -105,11 +111,7 @@ function pickOperator(event) {
         operatorSelection = '/';
         workingNumber.innerHTML = '0';
 
-    } else if (event === '.') {
-        
-    } else if (event === '=') {
-        makesEquals()
-    };
+    } 
     console.log('test')
 };
 
