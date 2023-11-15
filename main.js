@@ -14,6 +14,7 @@ function clear() {
 let inputValue = '';
 let storredValue = 0;
 let operatorSelection = '';
+let operatorList = ['+', '-', '*', '/'];
 
 let arrayCounter = 0;
 for (let i = 0; i <= 3; i++) {
@@ -30,7 +31,10 @@ for (let i = 0; i <= 3; i++) {
             }
             buttonType.addEventListener('click', (event) => {
                 if (event.target.classList.length >= 2) {
-                    pickOperator(event.target.innerHTML)
+                    operatorSelection = event.target.innerHTML;
+                    pickOperator(event.target.innerHTML, workingNumber, inputValue)
+                    
+                    
                     if (event === '.') {
         
                     } else if (event === '=') {
@@ -55,64 +59,13 @@ function pressedNumber(event) {
 }
 
 function pickOperator(event) {
-    if (event === '+') {
-        if (storredValue == '0') {
-            storredValue = workingNumber.innerHTML;
-            storredNumber.innerHTML = storredValue;
-            inputValue = '0';
-        } else if (!storredValue == '0') {
-            storredValue = Number(storredNumber.innerHTML) + Number(workingNumber.innerHTML);
-            storredNumber.innerHTML = storredValue;
-            inputValue = '0';
-            makesEquals();
-        };
-        operatorSelection = '+';
-        workingNumber.innerHTML = '0';
-
-    } else if (event === '-') {
-        if (storredValue == '0') {
-            storredValue = workingNumber.innerHTML;
-            storredNumber.innerHTML = storredValue;
-            inputValue = '0';
-        } else if (!storredValue == '0') {
-            storredValue = Number(storredNumber.innerHTML) - Number(workingNumber.innerHTML);
-            storredNumber.innerHTML = storredValue;
-            inputValue = '0';
-            makesEquals();
-        };
-        operatorSelection = '-';
-        workingNumber.innerHTML = '0';
-
-    } else if (event === '*') {
-        if (storredValue == '0') {
-            storredValue = workingNumber.innerHTML;
-            storredNumber.innerHTML = storredValue;
-            inputValue = '0';
-        } else if (!storredValue == '0') {
-            storredValue = Number(storredNumber.innerHTML) * Number(workingNumber.innerHTML);
-            storredNumber.innerHTML = storredValue;
-            inputValue = '0';
-            makesEquals();
-        };
-        operatorSelection = '*';
-        workingNumber.innerHTML = '0';
-
-    } else if (event === '/') {
-        if (storredValue == '0') {
-            storredValue = workingNumber.innerHTML;
-            storredNumber.innerHTML = storredValue;
-        } else if (!storredValue == '0') {
-            storredValue += Number(storredNumber.innerHTML) / Number(workingNumber.innerHTML);
-            storredNumber.innerHTML = storredValue;
-            inputValue = '0';
-            makesEquals();
-        };
-        operatorSelection = '+';
-        operatorSelection = '/';
-        workingNumber.innerHTML = '0';
-
-    } 
-    console.log('test')
+    const operators = {
+        '+': (a,b) => a+b,
+        '-': (a,b) => a-b,
+        '*': (a,b) => a*b,
+        '/': (a,b) => a/b
+    } // I got the idea for this code from chatGPT :( i knew I didn't want to just code a bunch of if statments and this seemed elegant
+    operators[event](workingNumber,inputValue);
 };
 
 function makesEquals() {
