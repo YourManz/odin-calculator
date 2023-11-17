@@ -13,7 +13,7 @@ function clear() {
 
 let inputValue = '';
 let storredValue = 0;
-let operatorSelection = '';
+let operatorSelection = '' || '+';
 let operatorList = ['+', '-', '*', '/'];
 
 let arrayCounter = 0;
@@ -32,7 +32,7 @@ for (let i = 0; i <= 3; i++) {
             buttonType.addEventListener('click', (event) => {
                 if (event.target.classList.length >= 2) {
                     operatorSelection = event.target.innerHTML;
-                    pickOperator(event.target.innerHTML, workingNumber, inputValue)
+                    storredNumber.innerHTML = pickOperator() || workingNumber.innerHTML
                     
                     
                     if (event === '.') {
@@ -52,20 +52,20 @@ for (let i = 0; i <= 3; i++) {
 }
 
 const workingNumber = document.querySelector('.working')
-const storredNumber = document.querySelector('.previous')
+let storredNumber = document.querySelector('.previous')
 function pressedNumber(event) {
     inputValue = inputValue + event.innerHTML;
     workingNumber.innerHTML = inputValue;
 }
 
-function pickOperator(event) {
+function pickOperator() {
     const operators = {
-        '+': (a,b) => a+b,
-        '-': (a,b) => a-b,
-        '*': (a,b) => a*b,
-        '/': (a,b) => a/b
+        '+': (a,b) => a + b,
+        '-': (a,b) => a - b,
+        '*': (a,b) => a * b,
+        '/': (a,b) => a / b
     } // I got the idea for this code from chatGPT :( i knew I didn't want to just code a bunch of if statments and this seemed elegant
-    operators[event](workingNumber,inputValue);
+    storredNumber.innerHTML = operators[operatorSelection](workingNumber, inputValue);
 };
 
 function makesEquals() {
