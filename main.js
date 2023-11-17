@@ -3,7 +3,6 @@ const charecterArray = [9, 8, 7, '+', 6, 5, 4, '-', 3, 2, 1, '*', '.', 0, '=', '
 const clearButton = document.querySelector('.js-clear');
 
 clearButton.addEventListener('click', ( ) => clear());
-
 function clear() {
     inputValue = '0';
     storredValue = 0;
@@ -32,18 +31,16 @@ for (let i = 0; i <= 3; i++) {
             buttonType.addEventListener('click', (event) => {
                 if (event.target.classList.length >= 2) {
                     operatorSelection = event.target.innerHTML;
-                    storredNumber.innerHTML = pickOperator() || workingNumber.innerHTML
-                    
-                    
+                    if (!workingNumber.innerHtML === 0) {
+                        pickOperator();
+                    }
                     if (event === '.') {
-        
                     } else if (event === '=') {
-                        pickOperator(event.target.innerHTML)
+                        equals()
                     };
                     return;
                 }
                 pressedNumber(event.target)
-                
             })
 
             rowDiv.appendChild(buttonType);
@@ -59,20 +56,25 @@ function pressedNumber(event) {
 }
 
 function pickOperator() {
+    if (storredNumber === '0') {
+        storredNumber.innerHTML = workingNumber.innerHTML;
+        workingNumber.innerHTML = 0;
+        return;
+    }
     const operators = {
         '+': (a,b) => a + b,
         '-': (a,b) => a - b,
         '*': (a,b) => a * b,
         '/': (a,b) => a / b
     } // I got the idea for this code from chatGPT :( i knew I didn't want to just code a bunch of if statments and this seemed elegant
-    storredNumber.innerHTML = operators[operatorSelection](workingNumber, inputValue);
+    storredNumber.innerHTML = operators[operatorSelection](workingNumber.innerHTML, inputValue.innerHTML);
 };
 
-function makesEquals() {
+function equals() {
     if (storredNumber === '0') {
         storredNumber.innerHTML = workingNumber.innerHTML;
     } else {
-        pickOperator(operatorSelection);
+        pickOperator(torSelection);
         
     };
 };
