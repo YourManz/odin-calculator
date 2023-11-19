@@ -16,37 +16,43 @@ let operatorSelection = '' || '+';
 let operatorList = ['+', '-', '*', '/'];
 
 let arrayCounter = 0;
-for (let i = 0; i <= 3; i++) {
+
+addRows();
+
+function addRows() {
+    for (let i = 0; i <= 3; i++) {
         const rowDiv = document.createElement('div');
         rowDiv.classList.add('row-div');
         numberPad.appendChild(rowDiv);
-        
-        for (let index=0; index < 4; index++) {
-            const buttonType = document.createElement('button');
-            buttonType.classList.add('regular-button');
-            buttonType.innerHTML = `${charecterArray[arrayCounter]}`;
-            if (typeof charecterArray[arrayCounter] === 'string') {
-                buttonType.classList.add(charecterArray[arrayCounter]);
-            }
-            buttonType.addEventListener('click', (event) => {
-                if (event.target.classList.length >= 2) {
-                    operatorSelection = event.target.innerHTML;
-                    if (!workingNumber.innerHtML === 0) {
-                        pickOperator();
-                    }
-                    if (event === '.') {
-                    } else if (event === '=') {
-                        equals()
-                    };
-                    return;
-                }
-                pressedNumber(event.target)
-            })
-
-            rowDiv.appendChild(buttonType);
-            arrayCounter++;
-        }
+        addButtons(rowDiv);
 }
+function addButtons(rowDiv) {
+    for (let index=0; index < 4; index++) {
+        const buttonType = document.createElement('button');
+        buttonType.classList.add('regular-button');
+        buttonType.innerHTML = `${charecterArray[arrayCounter]}`;
+        arrayCounter++;
+        if (typeof charecterArray[arrayCounter] === 'string') {
+            buttonType.classList.add(charecterArray[arrayCounter]);
+        }
+        buttonType.addEventListener('click', (event) => {
+            if (event.target.classList.length >= 2) {
+                operatorSelection = event.target.innerHTML;
+                if (workingNumber.innerHTML === 0) {
+                    pickOperator();
+                }
+                if (event === '.') {
+                } else if (event === '=') {
+                    equals()
+                };
+                return;
+            };
+            pressedNumber(event.target) 
+            rowDiv.appendChild(buttonType);
+            });
+        };  
+    };
+};
 
 const workingNumber = document.querySelector('.working')
 let storredNumber = document.querySelector('.previous')
