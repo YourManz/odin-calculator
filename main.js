@@ -32,6 +32,7 @@ function addButtons(rowDiv) {
         buttonType.classList.add('regular-button');
         buttonType.innerHTML = `${charecterArray[arrayCounter]}`;
         arrayCounter++;
+        rowDiv.appendChild(buttonType);
         if (typeof charecterArray[arrayCounter] === 'string') {
             buttonType.classList.add(charecterArray[arrayCounter]);
         }
@@ -48,7 +49,6 @@ function addButtons(rowDiv) {
                 return;
             };
             pressedNumber(event.target) 
-            rowDiv.appendChild(buttonType);
             });
         };  
     };
