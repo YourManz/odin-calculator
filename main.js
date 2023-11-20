@@ -39,14 +39,15 @@ function addButtons(rowDiv) {
         buttonType.addEventListener('click', (event) => {
             if (event.target.classList.length >= 2) {
                 operatorSelection = event.target.innerHTML;
+                if (event === '.') {
+                    return;
+                } else if (event === '=') {
+                    equals()
+                    return;
+                };
                 if (workingNumber.innerHTML === 0) {
                     pickOperator();
                 }
-                if (event === '.') {
-                } else if (event === '=') {
-                    equals()
-                };
-                return;
             };
             pressedNumber(event.target) 
             });
@@ -74,13 +75,15 @@ function pickOperator() {
         '/': (a,b) => a / b
     } // I got the idea for this code from chatGPT :( i knew I didn't want to just code a bunch of if statments and this seemed elegant
     storredNumber.innerHTML = operators[operatorSelection](workingNumber.innerHTML, inputValue.innerHTML);
+    inputValue = '';
+    workingNumber.innerHTML = inputValue;
 };
 
 function equals() {
     if (storredNumber === '0') {
         storredNumber.innerHTML = workingNumber.innerHTML;
     } else {
-        pickOperator(torSelection);
+        pickOperator();
         
     };
 };
