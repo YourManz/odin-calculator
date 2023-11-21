@@ -33,23 +33,25 @@ function addButtons(rowDiv) {
         buttonType.innerHTML = `${charecterArray[arrayCounter]}`;
         arrayCounter++;
         rowDiv.appendChild(buttonType);
-        if (typeof charecterArray[arrayCounter] === 'string') {
-            buttonType.classList.add(charecterArray[arrayCounter]);
+        if (typeof charecterArray[arrayCounter-1] === 'string') {
+            buttonType.classList.add(charecterArray[arrayCounter-1]);
         }
         buttonType.addEventListener('click', (event) => {
             if (event.target.classList.length >= 2) {
                 operatorSelection = event.target.innerHTML;
-                if (event === '.') {
+                if (event.target.innerHTML === '.') {
                     return;
-                } else if (event === '=') {
+                } else if (event.target.innerHTML === '=') {
+                    // equals()
+                    console.log('equals')
+                    return;
+                } else {
                     equals()
-                    return;
+                    console.log(`${operatorSelection}`)
                 };
-                if (workingNumber.innerHTML === 0) {
-                    pickOperator();
-                }
-            };
-            pressedNumber(event.target) 
+            } else {
+                pressedNumber(event.target) 
+            }
             });
         };  
     };
@@ -84,6 +86,5 @@ function equals() {
         storredNumber.innerHTML = workingNumber.innerHTML;
     } else {
         pickOperator();
-        
     };
 };
