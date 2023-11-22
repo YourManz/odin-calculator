@@ -65,7 +65,7 @@ function pressedNumber(event) {
 }
 
 function pickOperator() {
-    if (storredNumber === '0') {
+    if (storredNumber == '0') {
         storredNumber.innerHTML = workingNumber.innerHTML;
         workingNumber.innerHTML = 0;
         return;
@@ -76,9 +76,9 @@ function pickOperator() {
         '*': (a,b) => a * b,
         '/': (a,b) => a / b
     } // I got the idea for this code from chatGPT :( i knew I didn't want to just code a bunch of if statments and this seemed elegant
-    storredNumber.innerHTML = operators[operatorSelection](workingNumber.innerHTML, inputValue.innerHTML);
+    storredNumber.innerHTML = operators[operatorSelection](workingNumber.innerHTML, workingNumber.innerHTML);
     inputValue = '';
-    workingNumber.innerHTML = inputValue;
+    workingNumber.innerHTML = '0';
 };
 
 function equals() {
