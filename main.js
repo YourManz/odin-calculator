@@ -42,10 +42,10 @@ function addButtons(rowDiv) {
                 if (event.target.innerHTML === '.') {
                     return;
                 } else if (event.target.innerHTML === '=') {
-                    // equals()
-                    console.log('equals')
+                    equals();
                     return;
                 } else {
+                    console.log('hello')
                     equals()
                 };
             } else {
@@ -66,7 +66,6 @@ function pressedNumber(event) {
 function pickOperator() {
     if (storredNumber.innerHTML == '0') {
         storredNumber.innerHTML = workingNumber.innerHTML;
-        workingNumber.innerHTML = 0;
         return;
     }
     const operators = {
@@ -76,14 +75,10 @@ function pickOperator() {
         '/': (a,b) => Number(a) / Number(b)
     } // I got the idea for this code from chatGPT :( i knew I didn't want to just code a bunch of if statments and this seemed elegant
     storredNumber.innerHTML = operators[operatorSelection](workingNumber.innerHTML, workingNumber.innerHTML);
-    inputValue = '';
-    workingNumber.innerHTML = '0';
 };
 
 function equals() {
-    if (storredNumber === '0') {
-        storredNumber.innerHTML = workingNumber.innerHTML;
-    } else {
         pickOperator();
-    };
+        inputValue = '';
+        workingNumber.innerHTML = '0';
 };
