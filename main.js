@@ -44,7 +44,7 @@ function addButtons(rowDiv) {
                     equals();
                     return;
                 } else {
-                    operatorSelection = event.target.innerHTML;
+                    operatorSelection = event.target.innerHTML;op
                     equals()
                 };
             } else {
