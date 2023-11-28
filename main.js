@@ -12,7 +12,7 @@ function clear() {
 
 let inputValue = '';
 let storredValue = 0;
-let operatorSelection = '+';
+let operatorSelection = '';
 let operatorList = ['+', '-', '*', '/'];
 
 let arrayCounter = 0;
@@ -37,6 +37,7 @@ function addButtons(rowDiv) {
             buttonType.classList.add(charecterArray[arrayCounter-1]);
         }
         buttonType.addEventListener('click', (event) => {
+            let operatorChoice = operatorSelection || event.target.innerHTML;;
             if (event.target.classList.length >= 2) {
                 if (event.target.innerHTML === '.') {
                     return;
@@ -44,7 +45,7 @@ function addButtons(rowDiv) {
                     equals();
                     return;
                 } else {
-                    operatorSelection = event.target.innerHTML;op
+                    operatorChoice = event.target.innerHTML;
                     equals()
                 };
             } else {
@@ -73,12 +74,12 @@ function pickOperator() {
         '*': (a,b) => Number(a) * Number(b),
         '/': (a,b) => Number(a) / Number(b)
     } // I got the idea for this code from chatGPT :( i knew I didn't want to just code a bunch of if statments and this seemed elegant
-    storredNumber.innerHTML = operators[operatorSelection](storredNumber.innerHTML, workingNumber.innerHTML);
+    storredNumber.innerHTML = operators[operatorChoice](storredNumber.innerHTML, workingNumber.innerHTML);
 };
 
 function equals() {
-        console.log(operatorSelection)
         pickOperator();
         inputValue = '';
         workingNumber.innerHTML = '0';
+        operatorSelection = operatorChoice;
 };
