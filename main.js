@@ -14,6 +14,7 @@ let inputValue = '';
 let storredValue = 0;
 let operatorSelection = '';
 let operatorList = ['+', '-', '*', '/'];
+let operatorChoice = '';
 
 let arrayCounter = 0;
 
@@ -37,7 +38,7 @@ function addButtons(rowDiv) {
             buttonType.classList.add(charecterArray[arrayCounter-1]);
         }
         buttonType.addEventListener('click', (event) => {
-            let operatorChoice = operatorSelection || event.target.innerHTML;;
+            operatorChoice = operatorSelection || event.target.innerHTML;
             if (event.target.classList.length >= 2) {
                 if (event.target.innerHTML === '.') {
                     return;
